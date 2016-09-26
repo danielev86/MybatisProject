@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
+  'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
+<mapper namespace="it.azienda.progetto.bean.Star">
+	<resultMap id="result" type="it.azienda.progetto.bean.Star">
+		<result property="id" column="id" />
+		<result property="firstName" column="first_name" />
+		<result property="lastName" column="last_name" />
+		<result property="born" column="born" />
+		<result property="biography" column="biography" />
+	</resultMap>
+
+	<select id="getAllStar" resultMap="result">
+		SELECT * FROM stars;
+	</select>
+
+	<select id="getStarByLastname" parameterType="it.azienda.progetto.bean.Star" resultMap="result">
+		SELECT * FROM stars s WHERE s.last_name = #{lastName};
+	</select>
+	
+	<select id="getStarContainWord" resultMap="result">
+		SELECT * FROM stars s WHERE s.last_name LIKE #{lastName}
+	</select>
+</mapper>
