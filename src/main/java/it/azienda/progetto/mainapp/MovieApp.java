@@ -21,6 +21,10 @@ public class MovieApp {
 		
 		System.out.println("*****Stampa tutte le info delle star su DB con cognome Villaggio*****");
 		StarDAO.printStar("villaggio");
+		
+		System.out.println("*****Stampa tutte le info delle star su DB con select interna*****");
+		StarDAO.printMoreParameter();
+
 	}
 
 }

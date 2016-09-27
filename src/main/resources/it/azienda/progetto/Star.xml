@@ -14,11 +14,17 @@
 		SELECT * FROM stars;
 	</select>
 
-	<select id="getStarByLastname" parameterType="it.azienda.progetto.bean.Star" resultMap="result">
+	<select id="getStarByLastname" parameterType="it.azienda.progetto.bean.Star"
+		resultMap="result">
 		SELECT * FROM stars s WHERE s.last_name = #{lastName};
 	</select>
-	
+
 	<select id="getStarContainWord" resultMap="result">
-		SELECT * FROM stars s WHERE s.last_name LIKE #{lastName}
+		SELECT * FROM stars s
+		WHERE s.last_name LIKE #{lastName}
+	</select>
+
+	<select id="getStarSelect" resultMap="result">
+		<![CDATA[SELECT * FROM stars s WHERE s.last_name IN (SELECT last_name FROM stars WHERE last_name IN ( #{parameter1} , #{parameter2} ) )]]>
 	</select>
 </mapper>

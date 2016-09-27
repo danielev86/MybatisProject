@@ -2,7 +2,9 @@ package it.azienda.progetto.manager;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 
@@ -30,6 +32,21 @@ public class StarDAO {
 	public static void printStarByWord(String word) throws IOException{
 		SqlSession session = MyBatisManager.sessionFactory().openSession();
 		List<Star> stars = session.selectList("getStarContainWord", "%"+word+"%");
+		for (Star it: stars){
+			System.out.println(it.getFirstName() + " " + it.getLastName());
+			System.out.println(it.getBiography());
+			System.out.println("------------------------");
+		}
+		session.commit();
+		session.close();
+	}
+	
+	public static void printMoreParameter() throws IOException{
+		SqlSession session = MyBatisManager.sessionFactory().openSession();
+		Map<String, String> parameters = new HashMap<>();
+		parameters.put("parameter1", "Villaggio");
+		parameters.put("parameter2", "Sordi");
+		List<Star> stars = session.selectList("getStarSelect", parameters);
 		for (Star it: stars){
 			System.out.println(it.getFirstName() + " " + it.getLastName());
 			System.out.println(it.getBiography());
