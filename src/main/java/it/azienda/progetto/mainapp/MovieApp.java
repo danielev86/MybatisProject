@@ -24,6 +24,10 @@ public class MovieApp {
 		
 		System.out.println("*****Stampa tutte le info delle star su DB con select interna*****");
 		StarDAO.printMoreParameter();
+		
+		System.out.println("*****Stampa tutte le info delle star su DB con select con parametri parziali*****");
+		StarDAO.printMiniInfos();
+
 
 	}
 

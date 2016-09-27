@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC '-//mybatis.org//DTD Mapper 3.0//EN'
   'http://mybatis.org/dtd/mybatis-3-mapper.dtd'>
-<mapper namespace="it.azienda.progetto.bean.Star">
+<mapper namespace="it.azienda.progetto.bean">
 	<resultMap id="result" type="it.azienda.progetto.bean.Star">
 		<result property="id" column="id" />
 		<result property="firstName" column="first_name" />
@@ -9,7 +9,7 @@
 		<result property="born" column="born" />
 		<result property="biography" column="biography" />
 	</resultMap>
-
+	
 	<select id="getAllStar" resultMap="result">
 		SELECT * FROM stars;
 	</select>
@@ -26,5 +26,9 @@
 
 	<select id="getStarSelect" resultMap="result">
 		<![CDATA[SELECT * FROM stars s WHERE s.last_name IN (SELECT last_name FROM stars WHERE last_name IN ( #{parameter1} , #{parameter2} ) )]]>
+	</select>
+	
+	<select id="getMiniInfo" resultMap="result">
+		SELECT first_name, last_name, biography FROM stars
 	</select>
 </mapper>
