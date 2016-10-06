@@ -67,5 +67,18 @@ public class StarDAO {
 		session.commit();
 		session.close();
 	}
+	
+	public static void getInfoCondizioneImpostata() throws IOException{
+		SqlSession session = MyBatisManager.sessionFactory().openSession();
+		List<Star> stars = session.selectList("getInfoCondizioneImpostata");
+		for (Star it: stars){
+			System.out.println(it.getFirstName() + " " + it.getLastName());
+			System.out.println(it.getBiography());
+			System.out.println("------------------------");
+		}
+		session.commit();
+		session.close();
+		
+	}
 
 }

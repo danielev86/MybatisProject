@@ -27,6 +27,9 @@ public class MovieApp {
 		
 		System.out.println("*****Stampa tutte le info delle star su DB con select con parametri parziali*****");
 		StarDAO.printMiniInfos();
+		
+		System.out.println("*****Stampa tutte le info delle star su DB con select con parametri stubbati*****");
+		StarDAO.getInfoCondizioneImpostata();
 
 
 	}

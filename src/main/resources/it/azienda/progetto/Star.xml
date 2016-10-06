@@ -31,4 +31,14 @@
 	<select id="getMiniInfo" resultMap="result">
 		SELECT first_name, last_name, biography FROM stars
 	</select>
+	
+	<select id="getInfoCondizioneImpostata" resultMap="result">
+		SELECT *
+		FROM stars s 
+		<where>
+			<![CDATA[ 
+				last_name="Villaggio" OR last_name="Sordi"
+			]]>
+		</where>
+	</select>
 </mapper>
